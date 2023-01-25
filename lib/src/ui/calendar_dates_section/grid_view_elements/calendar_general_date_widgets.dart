@@ -5,6 +5,7 @@ import 'package:clean_calendar/src/utils/get_suitable_dates_properties.dart';
 import 'package:clean_calendar/src/utils/get_widget_center_offset_info.dart';
 import 'package:clean_calendar/src/utils/simulate_tap_on_an_offset.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class CalendarGeneralDenseDate extends StatelessWidget {
   const CalendarGeneralDenseDate(
@@ -265,32 +266,37 @@ class CalendarGeneralDenseSplashDate extends StatelessWidget {
                       : null,
                   splashFactory: InkRipple.splashFactory,
                   onTap: disable ? null : dateSuitableDatesOnTap,
-                  child: SizedBox(
-                    width: 40,
-                    child: Container(
-                      margin: const EdgeInsets.all(4.0),
+                  child: Shimmer(
+                    colorOpacity: 1,
+                    enabled:
+                        datesBackgroundColor == Colors.green ? true : false,
+                    child: SizedBox(
+                      width: 40,
                       child: Container(
-                        //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
-                        decoration: BoxDecoration(
-                          border: datesBorderColor != null
-                              ? Border.all(color: datesBorderColor, width: 1)
-                              : null,
-                          borderRadius: datesBorderRadius != null
-                              ? BorderRadius.all(
-                                  Radius.circular(datesBorderRadius))
-                              : null,
-                          color: datesBackgroundColor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            key: widgetKey,
-                            pageViewElementDate.day.toString(),
-                            overflow: TextOverflow.ellipsis,
-                            style: datesTextStyle != null
-                                ? datesTextStyle.copyWith(
-                                    color: datesTextColor,
-                                  )
-                                : TextStyle(color: datesTextColor),
+                        margin: const EdgeInsets.all(4.0),
+                        child: Container(
+                          //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
+                          decoration: BoxDecoration(
+                            border: datesBorderColor != null
+                                ? Border.all(color: datesBorderColor, width: 1)
+                                : null,
+                            borderRadius: datesBorderRadius != null
+                                ? BorderRadius.all(
+                                    Radius.circular(datesBorderRadius))
+                                : null,
+                            color: datesBackgroundColor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              key: widgetKey,
+                              pageViewElementDate.day.toString(),
+                              overflow: TextOverflow.ellipsis,
+                              style: datesTextStyle != null
+                                  ? datesTextStyle.copyWith(
+                                      color: datesTextColor,
+                                    )
+                                  : TextStyle(color: datesTextColor),
+                            ),
                           ),
                         ),
                       ),
