@@ -40,6 +40,41 @@ class _HomeState extends State<Home> {
         child: ListView(
           children: [
             CleanCalendar(
+              datesForStreaks: [
+                DateTime(2023, 1, 25),
+                DateTime(2023, 1, 26),
+              ],
+              currentDateProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBorderRadius: 1000,
+                  datesBackgroundColor: Colors.green,
+                  datesBorderColor: Colors.green,
+                  datesTextColor: Colors.black,
+                ),
+              ),
+              generalDatesProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBorderRadius: 1000,
+                  datesBackgroundColor: Colors.lightGreen.shade100,
+                  datesBorderColor: Colors.blue.shade100,
+                  datesTextColor: Colors.black,
+                ),
+              ),
+              streakDatesProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBorderRadius: 1000,
+                  datesBackgroundColor: Colors.green,
+                  datesBorderColor: Colors.blue,
+                  datesTextColor: Colors.white,
+                ),
+              ),
+              leadingTrailingDatesProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBorderRadius: 1000,
+                ),
+              ),
+            ),
+            CleanCalendar(
               enableDenseViewForDates: true,
               enableDenseSplashForDates: true,
               datesForStreaks: [
@@ -62,6 +97,20 @@ class _HomeState extends State<Home> {
               onCalendarViewDate: (DateTime calendarViewDate) {
                 // print(calendarViewDate);
               },
+              streakDatesProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBorderColor: Colors.green,
+                  datesTextColor: Colors.white,
+                  datesBackgroundColor: Colors.yellow,
+                ),
+              ),
+              currentDateProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBorderColor: Colors.green,
+                  datesBackgroundColor: Colors.green,
+                  datesTextColor: Colors.white,
+                ),
+              ),
               onSelectedDates: (List<DateTime> value) {
                 setState(() {
                   if (selectedDates.contains(value.first)) {
@@ -76,96 +125,96 @@ class _HomeState extends State<Home> {
             const SizedBox(
               height: 20,
             ),
-            CleanCalendar(
-              datePickerCalendarView: DatePickerCalendarView.weekView,
-              enableDenseViewForDates: true,
-              enableDenseSplashForDates: true,
-              datesForStreaks: [
-                DateTime(2022, 11, 5),
-                DateTime(2022, 11, 6),
-                DateTime(2022, 11, 7),
-                DateTime(2022, 11, 9),
-                DateTime(2022, 11, 10),
-                DateTime(2022, 11, 11),
-                DateTime(2022, 11, 13),
-                DateTime(2022, 11, 20),
-                DateTime(2022, 11, 21),
-                DateTime(2022, 11, 23),
-                DateTime(2022, 11, 24),
-              ],
-              dateSelectionMode: DatePickerSelectionMode.singleOrMultiple,
-              onCalendarViewDate: (DateTime calendarViewDate) {
-                // print(calendarViewDate);
-              },
-              selectedDates: selectedDates,
-              onSelectedDates: (List<DateTime> value) {
-                setState(() {
-                  if (selectedDates.contains(value.first)) {
-                    selectedDates.remove(value.first);
-                  } else {
-                    selectedDates.add(value.first);
-                  }
-                });
-                // print(selectedDates);
-              },
-            ),
-            CleanCalendar(
-              datePickerCalendarView: DatePickerCalendarView.weekView,
-              enableDenseViewForDates: true,
-              enableDenseSplashForDates: true,
-              datesForStreaks: [
-                DateTime(2022, 11, 5),
-                DateTime(2022, 11, 6),
-                DateTime(2022, 11, 7),
-                DateTime(2022, 11, 9),
-                DateTime(2022, 11, 10),
-                DateTime(2022, 11, 11),
-                DateTime(2022, 11, 13),
-                DateTime(2022, 11, 20),
-                DateTime(2022, 11, 21),
-                DateTime(2022, 11, 23),
-                DateTime(2022, 11, 24),
-              ],
-              dateSelectionMode: DatePickerSelectionMode.disable,
-              onCalendarViewDate: (DateTime calendarViewDate) {
-                // print(calendarViewDate);
-              },
-              startWeekday: WeekDay.monday,
-              weekdaysSymbol: const Weekdays(
-                sunday: "s",
-                monday: "m",
-                tuesday: "t",
-                wednesday: "w",
-                thursday: "t",
-                friday: "f",
-                saturday: "s",
-              ),
-              monthsSymbol: const Months(
-                  january: "Jan",
-                  february: "Feb",
-                  march: "Mar",
-                  april: "Apr",
-                  may: "May",
-                  june: "Jun",
-                  july: "Jul",
-                  august: "Aug",
-                  september: "Sep",
-                  october: "Oct",
-                  november: "Nov",
-                  december: "Dec"),
-              weekdaysProperties: WeekdaysProperties(
-                generalWeekdaysDecoration:
-                    WeekdaysDecoration(weekdayTextColor: Colors.red),
-                sundayDecoration: WeekdaysDecoration(
-                    weekdayTextColor: Colors.green,
-                    weekdayTextStyle:
-                        Theme.of(context).textTheme.headlineMedium),
-                saturdayDecoration: WeekdaysDecoration(
-                    weekdayTextColor: Colors.green,
-                    weekdayTextStyle:
-                        Theme.of(context).textTheme.headlineMedium),
-              ),
-            ),
+            // CleanCalendar(
+            //   datePickerCalendarView: DatePickerCalendarView.weekView,
+            //   enableDenseViewForDates: true,
+            //   enableDenseSplashForDates: true,
+            //   datesForStreaks: [
+            //     DateTime(2022, 11, 5),
+            //     DateTime(2022, 11, 6),
+            //     DateTime(2022, 11, 7),
+            //     DateTime(2022, 11, 9),
+            //     DateTime(2022, 11, 10),
+            //     DateTime(2022, 11, 11),
+            //     DateTime(2022, 11, 13),
+            //     DateTime(2022, 11, 20),
+            //     DateTime(2022, 11, 21),
+            //     DateTime(2022, 11, 23),
+            //     DateTime(2022, 11, 24),
+            //   ],
+            //   dateSelectionMode: DatePickerSelectionMode.singleOrMultiple,
+            //   onCalendarViewDate: (DateTime calendarViewDate) {
+            //     // print(calendarViewDate);
+            //   },
+            //   selectedDates: selectedDates,
+            //   onSelectedDates: (List<DateTime> value) {
+            //     setState(() {
+            //       if (selectedDates.contains(value.first)) {
+            //         selectedDates.remove(value.first);
+            //       } else {
+            //         selectedDates.add(value.first);
+            //       }
+            //     });
+            //     // print(selectedDates);
+            //   },
+            // ),
+            // CleanCalendar(
+            //   datePickerCalendarView: DatePickerCalendarView.weekView,
+            //   enableDenseViewForDates: true,
+            //   enableDenseSplashForDates: true,
+            //   datesForStreaks: [
+            //     DateTime(2022, 11, 5),
+            //     DateTime(2022, 11, 6),
+            //     DateTime(2022, 11, 7),
+            //     DateTime(2022, 11, 9),
+            //     DateTime(2022, 11, 10),
+            //     DateTime(2022, 11, 11),
+            //     DateTime(2022, 11, 13),
+            //     DateTime(2022, 11, 20),
+            //     DateTime(2022, 11, 21),
+            //     DateTime(2022, 11, 23),
+            //     DateTime(2022, 11, 24),
+            //   ],
+            //   dateSelectionMode: DatePickerSelectionMode.disable,
+            //   onCalendarViewDate: (DateTime calendarViewDate) {
+            //     // print(calendarViewDate);
+            //   },
+            //   startWeekday: WeekDay.monday,
+            //   weekdaysSymbol: const Weekdays(
+            //     sunday: "s",
+            //     monday: "m",
+            //     tuesday: "t",
+            //     wednesday: "w",
+            //     thursday: "t",
+            //     friday: "f",
+            //     saturday: "s",
+            //   ),
+            //   monthsSymbol: const Months(
+            //       january: "Jan",
+            //       february: "Feb",
+            //       march: "Mar",
+            //       april: "Apr",
+            //       may: "May",
+            //       june: "Jun",
+            //       july: "Jul",
+            //       august: "Aug",
+            //       september: "Sep",
+            //       october: "Oct",
+            //       november: "Nov",
+            //       december: "Dec"),
+            //   weekdaysProperties: WeekdaysProperties(
+            //     generalWeekdaysDecoration:
+            //         WeekdaysDecoration(weekdayTextColor: Colors.red),
+            //     sundayDecoration: WeekdaysDecoration(
+            //         weekdayTextColor: Colors.green,
+            //         weekdayTextStyle:
+            //             Theme.of(context).textTheme.headlineMedium),
+            //     saturdayDecoration: WeekdaysDecoration(
+            //         weekdayTextColor: Colors.green,
+            //         weekdayTextStyle:
+            //             Theme.of(context).textTheme.headlineMedium),
+            //   ),
+            // ),
           ],
         ),
       ),

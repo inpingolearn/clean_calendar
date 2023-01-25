@@ -59,30 +59,33 @@ class CalendarGeneralDenseDate extends StatelessWidget {
                 const Expanded(
                   child: SizedBox(),
                 ),
-                SizedBox(
-                  width: 40,
-                  child: Container(
-                    margin: const EdgeInsets.all(4.0),
+                Shimmer(
+                  colorOpacity: 0.7,
+                  child: SizedBox(
+                    width: 40,
                     child: Container(
-                      //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
-                      decoration: BoxDecoration(
-                        border: datesBorderColor != null
-                            ? Border.all(color: datesBorderColor, width: 1)
-                            : null,
-                        borderRadius: datesBorderRadius != null
-                            ? BorderRadius.all(
-                                Radius.circular(datesBorderRadius))
-                            : null,
-                        color: datesBackgroundColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          pageViewElementDate.day.toString(),
-                          style: datesTextStyle != null
-                              ? datesTextStyle.copyWith(
-                                  color: datesTextColor,
-                                )
-                              : TextStyle(color: datesTextColor),
+                      margin: const EdgeInsets.all(4.0),
+                      child: Container(
+                        //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
+                        decoration: BoxDecoration(
+                          border: datesBorderColor != null
+                              ? Border.all(color: datesBorderColor, width: 1)
+                              : null,
+                          borderRadius: datesBorderRadius != null
+                              ? BorderRadius.all(
+                                  Radius.circular(datesBorderRadius))
+                              : null,
+                          color: datesBackgroundColor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            pageViewElementDate.day.toString(),
+                            style: datesTextStyle != null
+                                ? datesTextStyle.copyWith(
+                                    color: datesTextColor,
+                                  )
+                                : TextStyle(color: datesTextColor),
+                          ),
                         ),
                       ),
                     ),

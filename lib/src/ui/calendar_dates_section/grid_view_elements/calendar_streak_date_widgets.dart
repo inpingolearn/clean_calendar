@@ -7,6 +7,7 @@ import 'package:clean_calendar/src/utils/get_widget_center_offset_info.dart';
 import 'package:clean_calendar/src/utils/simulate_tap_on_an_offset.dart';
 import 'package:clean_calendar/src/utils/space_fixer.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 /// Only use Ink if its parent is a button otherwise it will act weird such as this https://github.com/flutter/flutter/issues/73315
 /// Use space fixer between containers of same color to fix lines due to antialiasing will be fixed with impeller in future.
@@ -675,32 +676,38 @@ class CalendarStreakStartExpandedDate extends StatelessWidget {
                   bottom: 4,
                   left: 4,
                   right: pageViewElementDate.weekday == endWeekday ? 4 : 0),
-              child: Container(
-                //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
-                decoration: BoxDecoration(
-                  border: datesBorderColor != null
-                      ? Border(
-                          top: BorderSide(color: datesBorderColor, width: 1),
-                          bottom: BorderSide(color: datesBorderColor, width: 1),
-                          left: BorderSide(color: datesBorderColor, width: 1),
-                          right: BorderSide(color: datesBorderColor, width: 1),
-                        )
-                      : null,
-                  borderRadius: datesBorderRadius != null
-                      ? BorderRadius.only(
-                          topLeft: Radius.circular(datesBorderRadius),
-                          bottomLeft: Radius.circular(datesBorderRadius))
-                      : null,
-                  color: datesBackgroundColor,
-                ),
-                child: Center(
-                  child: Text(
-                    pageViewElementDate.day.toString(),
-                    style: datesTextStyle != null
-                        ? datesTextStyle.copyWith(
-                            color: datesTextColor,
+              child: Shimmer(
+                colorOpacity: 1,
+                enabled: datesBackgroundColor == Colors.green ? true : false,
+                child: Container(
+                  //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
+                  decoration: BoxDecoration(
+                    border: datesBorderColor != null
+                        ? Border(
+                            top: BorderSide(color: datesBorderColor, width: 1),
+                            bottom:
+                                BorderSide(color: datesBorderColor, width: 1),
+                            left: BorderSide(color: datesBorderColor, width: 1),
+                            right:
+                                BorderSide(color: datesBorderColor, width: 1),
                           )
-                        : TextStyle(color: datesTextColor),
+                        : null,
+                    borderRadius: datesBorderRadius != null
+                        ? BorderRadius.only(
+                            topLeft: Radius.circular(datesBorderRadius),
+                            bottomLeft: Radius.circular(datesBorderRadius))
+                        : null,
+                    color: datesBackgroundColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      pageViewElementDate.day.toString(),
+                      style: datesTextStyle != null
+                          ? datesTextStyle.copyWith(
+                              color: datesTextColor,
+                            )
+                          : TextStyle(color: datesTextColor),
+                    ),
                   ),
                 ),
               ),
@@ -1677,32 +1684,38 @@ class CalendarStreakEndExpandedDate extends StatelessWidget {
                   bottom: 4,
                   right: 4,
                   left: pageViewElementDate.weekday == startWeekday ? 4 : 0),
-              child: Container(
-                //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
-                decoration: BoxDecoration(
-                  border: datesBorderColor != null
-                      ? Border(
-                          top: BorderSide(color: datesBorderColor, width: 1),
-                          bottom: BorderSide(color: datesBorderColor, width: 1),
-                          left: BorderSide(color: datesBorderColor, width: 1),
-                          right: BorderSide(color: datesBorderColor, width: 1),
-                        )
-                      : null,
-                  borderRadius: datesBorderRadius != null
-                      ? BorderRadius.only(
-                          topRight: Radius.circular(datesBorderRadius),
-                          bottomRight: Radius.circular(datesBorderRadius))
-                      : null,
-                  color: datesBackgroundColor,
-                ),
-                child: Center(
-                  child: Text(
-                    pageViewElementDate.day.toString(),
-                    style: datesTextStyle != null
-                        ? datesTextStyle.copyWith(
-                            color: datesTextColor,
+              child: Shimmer(
+                colorOpacity: 1,
+                enabled: datesBackgroundColor == Colors.green ? true : false,
+                child: Container(
+                  //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
+                  decoration: BoxDecoration(
+                    border: datesBorderColor != null
+                        ? Border(
+                            top: BorderSide(color: datesBorderColor, width: 1),
+                            bottom:
+                                BorderSide(color: datesBorderColor, width: 1),
+                            left: BorderSide(color: datesBorderColor, width: 1),
+                            right:
+                                BorderSide(color: datesBorderColor, width: 1),
                           )
-                        : TextStyle(color: datesTextColor),
+                        : null,
+                    borderRadius: datesBorderRadius != null
+                        ? BorderRadius.only(
+                            topRight: Radius.circular(datesBorderRadius),
+                            bottomRight: Radius.circular(datesBorderRadius))
+                        : null,
+                    color: datesBackgroundColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      pageViewElementDate.day.toString(),
+                      style: datesTextStyle != null
+                          ? datesTextStyle.copyWith(
+                              color: datesTextColor,
+                            )
+                          : TextStyle(color: datesTextColor),
+                    ),
                   ),
                 ),
               ),
